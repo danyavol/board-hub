@@ -1,13 +1,8 @@
 import { createServer } from "http";
-import { Server } from "socket.io";
+import { createWebSocketSever } from "./utils/websocket-server";
 
 const server = createServer();
-const io = new Server(server, {
-    cors: { origin: "*" }
-});
 
-io.on("connection", (socket) => {
-    console.log('a user connected');
-});
+createWebSocketSever(server);
 
 server.listen(4000);
