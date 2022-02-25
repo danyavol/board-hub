@@ -6,10 +6,10 @@ export const userController: Controller = (params: ControllerParams) => {
 
     switch(message.action) {
         case UserActions.Login:
-            // Do something
+            console.log(1, message);
             break;
         case UserActions.ChangeName:
-            // Do something
+            console.log(2, message);
             break;
     }
 }
