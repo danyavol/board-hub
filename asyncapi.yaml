@@ -1,0 +1,38 @@
+asyncapi: 2.2.0
+
+channels:
+  /lobby:
+    publish:
+      message:
+        oneOf:
+          - $ref: "#/components/messages/LogIn"
+    subscribe:
+      message:
+        oneOf:
+          - $ref: "#/components/messages/UserJoined"
+          - $ref: "#/components/messages/UserLeft"
+
+components:
+  messages:
+    LogIn:
+      name: log in
+      payload:
+        type: string
+    UserJoined:
+      name: user joined
+      payload:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+    UserLeft:
+      name: user left
+      payload:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string

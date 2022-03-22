@@ -1,8 +1,16 @@
 import { createServer } from "http";
-import { createWebSocketSever } from "./utils/websocket-server";
+import { Server } from "socket.io";
+import { initLobby } from "./features/lobby/lobby";
 
-const server = createServer();
+const PORT = 4000;
 
-createWebSocketSever(server);
+const httpServer = createServer();
+const socketServer = new Server(httpServer, {
+    cors: { origin: "*" },
+    
+});
 
-server.listen(4000);
+initLobby(socketServer);
+
+httpServer.listen(PORT);
+console.log(`Listening at ws://localhost:${PORT}`)
