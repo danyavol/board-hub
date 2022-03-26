@@ -10,7 +10,11 @@ const socketServer = new Server(httpServer, {
     
 });
 
-initLobby(socketServer);
+/************ Topics Initialization Start ************/
+
+initLobby('lobby', socketServer);
+
+/************ Topics Initialization End ************/
 
 httpServer.listen(PORT);
 console.log(`Listening at ws://localhost:${PORT}`)
